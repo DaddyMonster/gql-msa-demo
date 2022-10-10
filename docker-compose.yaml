@@ -1,0 +1,40 @@
+version: '3.6'
+services:
+  account-db:
+    image: postgres:14
+    restart: always
+    ports:
+      - 5555:5432
+    volumes:
+      - ./data/account-db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: postgres
+  account-engine:
+    image: hasura/graphql-engine:latest
+    ports:
+      - '5556:8080'
+    depends_on:
+      - account-db
+    restart: always
+    env_file: ./env/account.env
+    environment:
+      - PG_CLIENT_VER=14
+  lms_db:
+    image: postgres:14
+    restart: always
+    ports:
+      - 5557:5432
+    volumes:
+      - ./data/lms-db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: postgres
+  lms_engine:
+    image: hasura/graphql-engine:latest
+    ports:
+      - '5558:8080'
+    depends_on:
+      - lms_db
+    restart: always
+    env_file: ./env/lms.env
+    environment:
+      - PG_CLIENT_VER=14
