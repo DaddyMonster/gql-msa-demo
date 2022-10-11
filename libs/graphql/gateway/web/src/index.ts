@@ -1,1 +1,2 @@
-export * from './lib/graphql-gateway-web';
+export * from './lib/__generated__';
+export * from './lib/CommonLayout';

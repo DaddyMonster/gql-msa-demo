@@ -1,8 +1,10 @@
 import {
   DelegateService,
   ExtendedField,
+  Middleware,
   TypeLoader,
 } from '@ddm91/nest-graphql-tools';
+import { ResolveFieldOptions } from '@nestjs/graphql';
 import { OperationTypeNode } from 'graphql';
 
 @TypeLoader('lms_session', { extend: true })

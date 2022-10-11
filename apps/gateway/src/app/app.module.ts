@@ -5,12 +5,17 @@ import {
   LmsEngineSchemaLoader,
 } from './schema-loaders';
 import { LmsSessionTypeLoader } from './lms-type-loader';
+import { JwtResolver } from './jwt.resolver';
 
 @Module({
   imports: [
     GraphqlGatewayModule.forRoot({
       playground: true,
       installSubscriptionHandlers: true,
+      cors: {
+        credentials: true,
+        origin: ['*'],
+      },
     }),
   ],
   controllers: [],
@@ -18,6 +23,7 @@ import { LmsSessionTypeLoader } from './lms-type-loader';
     AccountEngineSchemaLoader,
     LmsEngineSchemaLoader,
     LmsSessionTypeLoader,
+    JwtResolver,
   ],
 })
 export class AppModule {}
