@@ -1,7 +1,12 @@
 {
   "version": 2,
   "projects": {
+    "account-engine": "apps/engines/account",
     "gateway": "apps/gateway",
+    "graphql-gateway-web": "libs/graphql/gateway/web",
+    "graphql-service-account": "libs/graphql/service/account",
+    "graphql-service-lms": "libs/graphql/service/lms",
+    "lms-engine": "apps/engines/lms",
     "web-admin": "apps/web/admin",
     "web-admin-e2e": "apps/web/admin-e2e"
   }

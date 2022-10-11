@@ -4,7 +4,7 @@ services:
     image: postgres:14
     restart: always
     ports:
-      - 5555:5432
+      - 5201:5432
     volumes:
       - ./data/account-db:/var/lib/postgresql/data
     environment:
@@ -12,7 +12,7 @@ services:
   account-engine:
     image: hasura/graphql-engine:latest
     ports:
-      - '5556:8080'
+      - '5202:8080'
     depends_on:
       - account-db
     restart: always
@@ -23,7 +23,7 @@ services:
     image: postgres:14
     restart: always
     ports:
-      - 5557:5432
+      - 5203:5432
     volumes:
       - ./data/lms-db:/var/lib/postgresql/data
     environment:
@@ -31,7 +31,7 @@ services:
   lms_engine:
     image: hasura/graphql-engine:latest
     ports:
-      - '5558:8080'
+      - '5204:8080'
     depends_on:
       - lms_db
     restart: always

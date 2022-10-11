@@ -1,7 +1,10 @@
 import { Module } from '@nestjs/common';
 import { GraphqlGatewayModule } from '@ddm91/nest-graphql-tools';
-import { AccountEngineSchemaLoader, LmsEngineSchemaLoader } from './schema-loaders';
-
+import {
+  AccountEngineSchemaLoader,
+  LmsEngineSchemaLoader,
+} from './schema-loaders';
+import { LmsSessionTypeLoader } from './lms-type-loader';
 
 @Module({
   imports: [
@@ -13,7 +16,8 @@ import { AccountEngineSchemaLoader, LmsEngineSchemaLoader } from './schema-loade
   controllers: [],
   providers: [
     AccountEngineSchemaLoader,
-    LmsEngineSchemaLoader
+    LmsEngineSchemaLoader,
+    LmsSessionTypeLoader,
   ],
 })
 export class AppModule {}

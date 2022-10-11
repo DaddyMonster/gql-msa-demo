@@ -1,0 +1,20 @@
+{
+  "$schema": "../../../node_modules/nx/schema/project-schema.json",
+  "projectType": "application",
+  "targets": {
+    "console": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "hasura console --console-port=9090",
+        "cwd": "apps/engines/account"
+      }
+    },
+    "deploy": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "hasura deploy",
+        "cwd": "apps/engines/account"
+      }
+    }
+  }
+}

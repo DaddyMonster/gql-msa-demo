@@ -1,0 +1,24 @@
+{
+  "name": "graphql-gateway-web",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/graphql/gateway/web/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/graphql/gateway/web/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/graphql/gateway/web"],
+      "options": {
+        "jestConfig": "libs/graphql/gateway/web/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  }
+}

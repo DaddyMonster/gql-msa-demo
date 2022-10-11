@@ -1,0 +1,27 @@
+query Users($limit: Int!, $offset: Int!) {
+  user(limit: $limit, offset: $offset) {
+    ...UserFragment
+  }
+}
+
+fragment UserFragment on user {
+  id
+  name
+  type
+  tickets {
+    ...TicketFragment
+  }
+}
+
+query TicketsByUser($user_id: uuid!) {
+  ticket(where: { user_id: { _eq: $user_id } }) {
+    ...TicketFragment
+  }
+}
+
+fragment TicketFragment on ticket {
+  id
+  point
+  user_id
+  used
+}

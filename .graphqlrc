@@ -1,0 +1,68 @@
+projects:
+  gateway:
+    schema:
+      - http://localhost:3333/graphql
+    documents:
+      - libs/graphql/documents/web/**/*.{gql.graphql}
+    extensions:
+      codegen:
+        watch: true
+        generates:
+          libs/graphql/gateway/web/src/lib/__generated__.tsx:
+          config:
+          skipDocumentsValidation: true
+          dedupeOperationSuffix: true
+          dedupeFragments: true
+          namingConvention:
+            typeNames: 'change-case#pascalCase'
+            enumValues: change-case-all#constantCase
+          plugins:
+            - typescript
+            - typescript-operations
+            - typescript-urql
+  account:
+    schema:
+      - http://localhost:5202/v1/graphql:
+          headers:
+            x-hasura-admin-secret: hello
+    documents:
+      - 'libs/graphql/service/account/document/**/*.{gql,graphql}'
+    extensions:
+      codegen:
+        watch: true
+        generates:
+          libs/graphql/service/account/src/lib/__generated__.ts:
+            config:
+            skipDocumentsValidation: true
+            flattenGeneratedTypes: true
+            dedupeOperationSuffix: true
+            namingConvention:
+              typeNames: 'change-case#pascalCase'
+              #enumValues: change-case-all#constantCase
+            plugins:
+              - typescript
+              - typescript-operations
+              - typescript-generic-sdk
+  lms:
+    schema:
+      - http://localhost:5204/v1/graphql:
+          headers:
+            x-hasura-admin-secret: hello
+    documents:
+      - 'libs/graphql/service/lms/document/**/*.{gql,graphql}'
+    extensions:
+      codegen:
+        watch: true
+        generates:
+          libs/graphql/service/lms/src/lib/__generated__.ts:
+            config:
+            skipDocumentsValidation: true
+            flattenGeneratedTypes: true
+            dedupeOperationSuffix: true
+            namingConvention:
+              typeNames: 'change-case#pascalCase'
+              #enumValues: change-case-all#constantCase
+            plugins:
+              - typescript
+              - typescript-operations
+              - typescript-generic-sdk

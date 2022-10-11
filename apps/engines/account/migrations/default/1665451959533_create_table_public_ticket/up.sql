@@ -1,0 +1,1 @@
+CREATE TABLE "public"."ticket" ("id" uuid NOT NULL, "user_id" uuid NOT NULL, "point" integer NOT NULL, "used" boolean NOT NULL DEFAULT False, PRIMARY KEY ("id") , FOREIGN KEY ("user_id") REFERENCES "public"."user"("id") ON UPDATE restrict ON DELETE restrict);
